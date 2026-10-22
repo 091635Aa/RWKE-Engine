@@ -11,7 +11,7 @@ from pathlib import Path
 
 import markdown
 
-EDGE = r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
+EDGE = r"<path>\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
 目录 = Path(__file__).parent
 MD = 目录 / "RWKV_小白超入门_图文介绍.md"
 PDF = 目录.parent / "PDF转化" / "RWKV_小白超入门_图文介绍.pdf"

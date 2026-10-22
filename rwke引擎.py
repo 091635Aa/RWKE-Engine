@@ -80,7 +80,7 @@ def _注入msvc环境() -> bool:
     """
     if shutil.which("cl"):
         return True
-    查找 = Path(r"C:\Program Files (x86)\Microsoft Visual Studio\Installer\vswhere.exe")
+    查找 = Path(r"<path>\Program Files (x86)\Microsoft Visual Studio\Installer\vswhere.exe")
     if not 查找.exists():
         return False
     根 = subprocess.run(
@@ -92,7 +92,7 @@ def _注入msvc环境() -> bool:
     if not 根:
         return False
     msvc候选 = sorted((Path(根) / "VC" / "Tools" / "MSVC").glob("*"))
-    sdk根 = Path(r"C:\Program Files (x86)\Windows Kits\10")
+    sdk根 = Path(r"<path>\Program Files (x86)\Windows Kits\10")
     sdk候选 = sorted((sdk根 / "Include").glob("10.*")) if (sdk根 / "Include").exists() else []
     if not msvc候选 or not sdk候选:
         return False

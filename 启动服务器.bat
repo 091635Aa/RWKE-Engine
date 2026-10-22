@@ -10,7 +10,7 @@ REM ============================================================
 chcp 65001 >nul
 
 REM —— CUDA 算子编译工具链（首次已编好缓存，日常启动仅用于命中缓存校验）——
-set "PATH=C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\bin\Hostx64\x64;C:\Program Files (x86)\Windows Kits\10\bin\10.0.26100.0\x64;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v13.3\bin;%PATH%"
+set "PATH=<path>\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\bin\Hostx64\x64;<path>\Program Files (x86)\Windows Kits\10\bin\10.0.26100.0\x64;<path>\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v13.3\bin;%PATH%"
 set "NVCC_APPEND_FLAGS=-Xcompiler /Zc:preprocessor"
 
 cd /d "<workspace>/RWKE"
