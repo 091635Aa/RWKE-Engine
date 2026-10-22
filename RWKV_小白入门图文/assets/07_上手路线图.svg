@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="470" viewBox="0 0 960 470" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <defs>
+    <marker id="arr7" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#475569"/>
+    </marker>
+  </defs>
+  <rect width="960" height="470" fill="#FFFFFF"/>
+  <text x="480" y="36" font-size="20" font-weight="bold" fill="#1E293B" text-anchor="middle">上手四步走：从零跑到「能聊天、能存记忆」</text>
+
+  <!-- 步骤卡 -->
+  <g font-size="13.5">
+    <rect x="30" y="70" width="200" height="200" rx="12" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+    <circle cx="62" cy="102" r="16" fill="#2563EB"/>
+    <text x="62" y="108" font-size="15" fill="#FFFFFF" text-anchor="middle" font-weight="bold">1</text>
+    <text x="130" y="108" font-size="16" font-weight="bold" fill="#1D4ED8" text-anchor="middle">装环境</text>
+    <text x="46" y="140" fill="#334155">pip install torch rwkv</text>
+    <text x="46" y="164" fill="#334155">有显卡用 cuda fp16</text>
+    <text x="46" y="188" fill="#334155">没显卡用 cpu fp32</text>
+    <text x="46" y="212" fill="#334155">环境变量 RWKV_V7_ON=1</text>
+    <text x="46" y="236" fill="#64748B">（开启 RWKV-7 支持）</text>
+
+    <rect x="272" y="70" width="200" height="200" rx="12" fill="#F0FDFA" stroke="#0F766E" stroke-width="1.6"/>
+    <circle cx="304" cy="102" r="16" fill="#0F766E"/>
+    <text x="304" y="108" font-size="15" fill="#FFFFFF" text-anchor="middle" font-weight="bold">2</text>
+    <text x="372" y="108" font-size="16" font-weight="bold" fill="#0F766E" text-anchor="middle">下模型</text>
+    <text x="288" y="140" fill="#334155">python 下载模型.py</text>
+    <text x="288" y="164" fill="#334155">0.4B 冒烟（0.86GB）</text>
+    <text x="288" y="188" fill="#334155">1.5B 主力（2.85GB）</text>
+    <text x="288" y="212" fill="#334155">国内镜像 hf-mirror /</text>
+    <text x="288" y="236" fill="#334155">ModelScope 自动校验</text>
+
+    <rect x="514" y="70" width="200" height="200" rx="12" fill="#FFF7ED" stroke="#EA8C3C" stroke-width="1.6"/>
+    <circle cx="546" cy="102" r="16" fill="#EA8C3C"/>
+    <text x="546" y="108" font-size="15" fill="#FFFFFF" text-anchor="middle" font-weight="bold">3</text>
+    <text x="614" y="108" font-size="16" font-weight="bold" fill="#C2570B" text-anchor="middle">跑起来</text>
+    <text x="530" y="140" fill="#334155">三行代码加载模型</text>
+    <text x="530" y="164" fill="#334155">模板：User: …</text>
+    <text x="530" y="188" fill="#334155">换行空行 Assistant:</text>
+    <text x="530" y="212" fill="#334155">温度 1.0 / top_p 0.9</text>
+    <text x="530" y="236" fill="#334155">立即能聊</text>
+
+    <rect x="756" y="70" width="176" height="200" rx="12" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.6"/>
+    <circle cx="788" cy="102" r="16" fill="#4F46E5"/>
+    <text x="788" y="108" font-size="15" fill="#FFFFFF" text-anchor="middle" font-weight="bold">4</text>
+    <text x="844" y="108" font-size="16" font-weight="bold" fill="#4338CA" text-anchor="middle">玩转 State</text>
+    <text x="772" y="140" fill="#334155">保存日记状态</text>
+    <text x="772" y="164" fill="#334155">克隆分支对话</text>
+    <text x="772" y="188" fill="#334155">挂载角色记忆</text>
+    <text x="772" y="212" fill="#334155">进阶：State Tuning</text>
+    <text x="772" y="236" fill="#334155">（调「初始心情」）</text>
+  </g>
+
+  <g stroke="#475569" stroke-width="2.4" marker-end="url(#arr7)">
+    <line x1="230" y1="170" x2="266" y2="170"/>
+    <line x1="472" y1="170" x2="508" y2="170"/>
+    <line x1="714" y1="170" x2="750" y2="170"/>
+  </g>
+
+  <!-- 工具箱 -->
+  <rect x="30" y="300" width="902" height="112" rx="12" fill="#F8FAFC" stroke="#CBD5E1"/>
+  <text x="480" y="330" font-size="15" font-weight="bold" fill="#334155" text-anchor="middle">进阶工具箱（不想写代码也有得玩）</text>
+  <g font-size="13.5" text-anchor="middle" fill="#334155">
+    <rect x="60"  y="348" width="196" height="44" rx="8" fill="#FFFFFF" stroke="#94A3B8"/>
+    <text x="158" y="366" font-weight="bold" fill="#1E3A5F">RWKV Runner</text>
+    <text x="158" y="384" fill="#64748B">图形界面 · 一键下载对话</text>
+    <rect x="272" y="348" width="196" height="44" rx="8" fill="#FFFFFF" stroke="#94A3B8"/>
+    <text x="370" y="366" font-weight="bold" fill="#1E3A5F">llama.cpp / Ollama</text>
+    <text x="370" y="384" fill="#64748B">GGUF 量化 · 命令行即聊</text>
+    <rect x="484" y="348" width="196" height="44" rx="8" fill="#FFFFFF" stroke="#94A3B8"/>
+    <text x="582" y="366" font-weight="bold" fill="#1E3A5F">vLLM 服务化</text>
+    <text x="582" y="384" fill="#64748B">OpenAI 兼容接口上线</text>
+    <rect x="696" y="348" width="212" height="44" rx="8" fill="#FFFFFF" stroke="#94A3B8"/>
+    <text x="802" y="366" font-weight="bold" fill="#1E3A5F">Albatross / Ai00</text>
+    <text x="802" y="384" fill="#64748B">目前最快推理 / Web 服务</text>
+  </g>
+
+  <text x="480" y="448" font-size="13" fill="#94A3B8" text-anchor="middle">图 7 · 上手路线图（对应仓库 RWKE/下载模型.py 与 RWKE/状态接口.py，可直接复用）</text>
+</svg>

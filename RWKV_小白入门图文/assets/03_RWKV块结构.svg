@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="600" viewBox="0 0 960 600" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <defs>
+    <marker id="arr3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#0F766E"/>
+    </marker>
+  </defs>
+  <rect width="960" height="600" fill="#FFFFFF"/>
+  <text x="480" y="34" font-size="20" font-weight="bold" fill="#1E293B" text-anchor="middle">拆开一个 RWKV 残差块：时间混合 + 通道混合（交替堆叠 N 层）</text>
+
+  <!-- 左侧主流程 -->
+  <g stroke="#0F766E" stroke-width="2" marker-end="url(#arr3)">
+    <line x1="230" y1="76" x2="230" y2="96"/>
+    <line x1="230" y1="152" x2="230" y2="172"/>
+    <line x1="230" y1="242" x2="230" y2="262"/>
+    <line x1="230" y1="392" x2="230" y2="412"/>
+    <line x1="230" y1="462" x2="230" y2="482"/>
+  </g>
+
+  <rect x="90" y="48" width="280" height="28" rx="14" fill="#1E3A5F"/>
+  <text x="230" y="68" font-size="15" fill="#FFFFFF" text-anchor="middle">输入 xₜ（当前词的向量）</text>
+
+  <rect x="60" y="98" width="340" height="54" rx="10" fill="#E0F2FE" stroke="#2563EB"/>
+  <text x="230" y="120" font-size="15" fill="#1E3A5F" text-anchor="middle" font-weight="bold">Token Shift（时间位移）</text>
+  <text x="230" y="141" font-size="13" fill="#475569" text-anchor="middle">把「上一个词」掺进「当前词」→ 记住短程语感</text>
+
+  <!-- R K V 三路 -->
+  <g font-size="14" text-anchor="middle">
+    <rect x="74" y="176" width="100" height="62" rx="8" fill="#CCFBF1" stroke="#0F766E" stroke-width="1.5"/>
+    <text x="124" y="200" fill="#0F766E" font-weight="bold">R 接受度</text>
+    <text x="124" y="222" font-size="12" fill="#0F766E">过去信息信多少</text>
+    <rect x="184" y="176" width="100" height="62" rx="8" fill="#FFEDD5" stroke="#EA8C3C" stroke-width="1.5"/>
+    <text x="234" y="200" fill="#C2570B" font-weight="bold">W 衰减</text>
+    <text x="234" y="222" font-size="12" fill="#C2570B">旧记忆淡忘速度</text>
+    <rect x="294" y="176" width="100" height="62" rx="8" fill="#E0E7FF" stroke="#4F46E5" stroke-width="1.5"/>
+    <text x="344" y="200" fill="#3730A3" font-weight="bold">K·V 键值</text>
+    <text x="344" y="222" font-size="12" fill="#3730A3">新知识及其内容</text>
+  </g>
+
+  <!-- WKV 核心 -->
+  <rect x="60" y="264" width="340" height="126" rx="10" fill="#F0FDFA" stroke="#0F766E" stroke-width="2"/>
+  <text x="230" y="290" font-size="15" fill="#0F766E" text-anchor="middle" font-weight="bold">WKV 状态更新（时间混合核心）</text>
+  <rect x="80" y="302" width="300" height="34" rx="6" fill="#FFFFFF" stroke="#99F6E4"/>
+  <text x="230" y="324" font-size="13.5" fill="#134E4A" text-anchor="middle" font-family="Consolas, monospace">新状态 = 衰减w ⊙ 旧状态 + K ⊗ V</text>
+  <rect x="80" y="344" width="300" height="34" rx="6" fill="#FFFFFF" stroke="#99F6E4"/>
+  <text x="230" y="366" font-size="13.5" fill="#134E4A" text-anchor="middle" font-family="Consolas, monospace">输出 = sigmoid(R) ⊙ WKV(读状态)</text>
+
+  <circle cx="230" cy="427" r="16" fill="#0F766E"/>
+  <text x="230" y="433" font-size="16" fill="#FFFFFF" text-anchor="middle" font-weight="bold">+</text>
+  <line x1="86" y1="427" x2="212" y2="427" stroke="#0F766E" stroke-width="1.6" stroke-dasharray="5 4"/>
+
+  <rect x="60" y="414" width="20" height="26" fill="none"/>
+  <rect x="60" y="484" width="340" height="54" rx="10" fill="#EEF2FF" stroke="#4F46E5"/>
+  <text x="230" y="506" font-size="15" fill="#3730A3" text-anchor="middle" font-weight="bold">Channel Mix（通道混合）</text>
+  <text x="230" y="527" font-size="13" fill="#475569" text-anchor="middle">FFN 门控变种：对特征通道做非线性加工</text>
+
+  <text x="230" y="566" font-size="14" fill="#64748B" text-anchor="middle">（输出再进下一个残差块，重复 N 层）</text>
+
+  <!-- 右侧说明卡 -->
+  <rect x="450" y="48" width="480" height="490" rx="12" fill="#F8FAFC" stroke="#CBD5E1"/>
+  <text x="690" y="80" font-size="17" fill="#1E293B" text-anchor="middle" font-weight="bold">名字由来：R · W · K · V 四个零件</text>
+  <g font-size="14">
+    <rect x="470" y="98" width="440" height="92" rx="10" fill="#CCFBF1" stroke="#0F766E"/>
+    <text x="488" y="126" fill="#0F766E" font-weight="bold" font-size="16">R = Receptance（接受度）</text>
+    <text x="488" y="150" fill="#134E4A">一个 0~1 的「水龙头」：控制有多少过去信息</text>
+    <text x="488" y="172" fill="#134E4A">允许流入当前输出。 sigmoid 门控。</text>
+
+    <rect x="470" y="202" width="440" height="92" rx="10" fill="#FFEDD5" stroke="#EA8C3C"/>
+    <text x="488" y="230" fill="#C2570B" font-weight="bold" font-size="16">W = Weight（位置权重衰减）</text>
+    <text x="488" y="254" fill="#7C2D12">「记忆橡皮擦」：每个通道有自己的淡忘速度，</text>
+    <text x="488" y="276" fill="#7C2D12">重要的事慢慢忘，杂事快速忘（可学习）。</text>
+
+    <rect x="470" y="306" width="440" height="92" rx="10" fill="#E0E7FF" stroke="#4F46E5"/>
+    <text x="488" y="334" fill="#3730A3" font-weight="bold" font-size="16">K = Key（键） / V = Value（值）</text>
+    <text x="488" y="358" fill="#312E81">与注意力中的 K/V 同源：K 决定「新知识</text>
+    <text x="488" y="380" fill="#312E81">写进状态哪里」，V 是「写入的内容」。</text>
+
+    <rect x="470" y="410" width="440" height="104" rx="10" fill="#F1F5F9" stroke="#64748B"/>
+    <text x="488" y="438" fill="#1E293B" font-weight="bold" font-size="16">一句话总结</text>
+    <text x="488" y="462" fill="#334155">「带着衰减地记账」：新账写进固定画板（K⊗V），</text>
+    <text x="488" y="484" fill="#334155">旧账按 W 褪色，读账时用 R 决定听多少过去，</text>
+    <text x="488" y="506" fill="#334155">全程没有 Attention，没有 KV 缓存。</text>
+  </g>
+
+  <text x="480" y="584" font-size="13" fill="#94A3B8" text-anchor="middle">图 3 · RWKV 残差块结构（RWKV-4/5/6 的经典形态；RWKV-7 把「衰减+写入」升级为广义 Delta Rule）</text>
+</svg>

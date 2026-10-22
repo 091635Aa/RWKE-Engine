@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="500" viewBox="0 0 960 500" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <defs>
+    <marker id="arr5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1E3A5F"/>
+    </marker>
+  </defs>
+  <rect width="960" height="500" fill="#FFFFFF"/>
+  <text x="480" y="36" font-size="20" font-weight="bold" fill="#1E293B" text-anchor="middle">RWKV 版本进化史：从个人实验到 Linux 基金会旗舰开源项目</text>
+
+  <!-- 主时间线 -->
+  <line x1="50" y1="260" x2="920" y2="260" stroke="#1E3A5F" stroke-width="4" marker-end="url(#arr5)"/>
+
+  <!-- 节点 1：上 -->
+  <circle cx="110" cy="260" r="9" fill="#0F766E"/>
+  <line x1="110" y1="251" x2="110" y2="200" stroke="#94A3B8" stroke-width="1.4"/>
+  <rect x="20" y="96" width="200" height="104" rx="10" fill="#F0FDFA" stroke="#0F766E"/>
+  <text x="120" y="120" font-size="15" font-weight="bold" fill="#0F766E" text-anchor="middle">2021.08 · RWKV-1</text>
+  <text x="120" y="143" font-size="13" fill="#334155" text-anchor="middle">BlinkDL 的个人实验：</text>
+  <text x="120" y="163" font-size="13" fill="#334155" text-anchor="middle">给注意力「去掉软最大值」</text>
+  <text x="120" y="183" font-size="13" fill="#334155" text-anchor="middle">用衰减+位移改造 minGPT</text>
+
+  <!-- 节点 2：下 -->
+  <circle cx="262" cy="260" r="9" fill="#0F766E"/>
+  <line x1="262" y1="269" x2="262" y2="312" stroke="#94A3B8" stroke-width="1.4"/>
+  <rect x="162" y="312" width="200" height="104" rx="10" fill="#EFF6FF" stroke="#2563EB"/>
+  <text x="262" y="336" font-size="15" font-weight="bold" fill="#1D4ED8" text-anchor="middle">2023.05 · RWKV-4</text>
+  <text x="262" y="359" font-size="13" fill="#334155" text-anchor="middle">论文登上 EMNLP 2023，</text>
+  <text x="262" y="379" font-size="13" fill="#334155" text-anchor="middle">最大训到 14B——</text>
+  <text x="262" y="399" font-size="13" fill="#334155" text-anchor="middle">「史上最大稠密 RNN」</text>
+
+  <!-- 节点 3：上 -->
+  <circle cx="404" cy="260" r="9" fill="#EA8C3C"/>
+  <line x1="404" y1="251" x2="404" y2="200" stroke="#94A3B8" stroke-width="1.4"/>
+  <rect x="304" y="96" width="200" height="104" rx="10" fill="#FFF7ED" stroke="#EA8C3C"/>
+  <text x="404" y="120" font-size="15" font-weight="bold" fill="#C2570B" text-anchor="middle">2023.09 · 进基金会</text>
+  <text x="404" y="143" font-size="13" fill="#334155" text-anchor="middle">加入 Linux 基金会 AI&amp;Data，</text>
+  <text x="404" y="163" font-size="13" fill="#334155" text-anchor="middle">首个「生成式 AI」托管项目；</text>
+  <text x="404" y="183" font-size="13" fill="#334155" text-anchor="middle">中文社区：元始智能</text>
+
+  <!-- 节点 4：下 -->
+  <circle cx="546" cy="260" r="9" fill="#0F766E"/>
+  <line x1="546" y1="269" x2="546" y2="312" stroke="#94A3B8" stroke-width="1.4"/>
+  <rect x="446" y="312" width="200" height="104" rx="10" fill="#F0FDFA" stroke="#0F766E"/>
+  <text x="546" y="336" font-size="15" font-weight="bold" fill="#0F766E" text-anchor="middle">2024 · RWKV-5/6</text>
+  <text x="546" y="359" font-size="13" fill="#334155" text-anchor="middle">5「Eagle」：状态升为矩阵，</text>
+  <text x="546" y="379" font-size="13" fill="#334155" text-anchor="middle">多头 WKV；</text>
+  <text x="546" y="399" font-size="13" fill="#334155" text-anchor="middle">6「Finch」：衰减随内容变化</text>
+
+  <!-- 节点 5：上 -->
+  <circle cx="688" cy="260" r="9" fill="#4F46E5"/>
+  <line x1="688" y1="251" x2="688" y2="200" stroke="#94A3B8" stroke-width="1.4"/>
+  <rect x="588" y="96" width="200" height="104" rx="10" fill="#EEF2FF" stroke="#4F46E5"/>
+  <text x="688" y="120" font-size="15" font-weight="bold" fill="#4338CA" text-anchor="middle">2025.03 · RWKV-7</text>
+  <text x="688" y="143" font-size="13" fill="#334155" text-anchor="middle">「Goose 鹅」：广义 Delta Rule</text>
+  <text x="688" y="163" font-size="13" fill="#334155" text-anchor="middle">动态状态演化，表达力</text>
+  <text x="688" y="183" font-size="13" fill="#334155" text-anchor="middle">突破 TC⁰ 理论上限</text>
+
+  <!-- 节点 6：下 -->
+  <circle cx="830" cy="260" r="9" fill="#DC2626"/>
+  <line x1="830" y1="269" x2="830" y2="312" stroke="#94A3B8" stroke-width="1.4"/>
+  <rect x="730" y="312" width="200" height="104" rx="10" fill="#FEF2F2" stroke="#DC2626"/>
+  <text x="830" y="336" font-size="15" font-weight="bold" fill="#B91C1C" text-anchor="middle">2025.10+ · G1 / G0a3</text>
+  <text x="830" y="359" font-size="13" fill="#334155" text-anchor="middle">13.3B「全球最强开源纯 RNN」，</text>
+  <text x="830" y="379" font-size="13" fill="#334155" text-anchor="middle">对话/推理增强系列；</text>
+  <text x="830" y="399" font-size="13" fill="#334155" text-anchor="middle">GGUF、Ollama 生态就位</text>
+
+  <text x="480" y="472" font-size="13" fill="#94A3B8" text-anchor="middle">图 5 · 版本时间线（全程 Apache 2.0 开源，权重/代码/语料清单全部公开）</text>
+</svg>

@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="560" viewBox="0 0 960 560" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#64748B"/>
+    </marker>
+  </defs>
+  <rect width="960" height="560" fill="#FFFFFF"/>
+
+  <!-- ================= Transformer 面板 ================= -->
+  <g>
+    <rect x="20" y="16" width="300" height="528" rx="12" fill="#F1F5F9" stroke="#CBD5E1"/>
+    <rect x="20" y="16" width="300" height="44" rx="12" fill="#1E3A5F"/>
+    <rect x="20" y="44" width="300" height="16" fill="#1E3A5F"/>
+    <text x="170" y="45" font-size="20" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Transformer</text>
+
+    <!-- 全连接注意力：4 个 token 互看 -->
+    <g stroke="#94A3B8" stroke-width="1.6" fill="none">
+      <path d="M66,150 Q105,100 144,150"/><path d="M66,150 Q131,84 198,150"/><path d="M66,150 Q155,70 252,150"/>
+      <path d="M144,150 Q171,116 198,150"/><path d="M144,150 Q186,106 252,150"/>
+      <path d="M198,150 Q224,116 252,150"/>
+    </g>
+    <g>
+      <circle cx="66" cy="150" r="16" fill="#3B82F6"/><circle cx="144" cy="150" r="16" fill="#3B82F6"/>
+      <circle cx="198" cy="150" r="16" fill="#3B82F6"/><circle cx="252" cy="150" r="16" fill="#3B82F6"/>
+    </g>
+    <text x="170" y="196" font-size="15" fill="#475569" text-anchor="middle">每个词都要「回看」之前的所有词</text>
+
+    <!-- KV 缓存堆叠 -->
+    <g>
+      <rect x="96" y="216" width="148" height="16" fill="#93C5FD" stroke="#60A5FA"/>
+      <rect x="96" y="234" width="148" height="16" fill="#93C5FD" stroke="#60A5FA"/>
+      <rect x="96" y="252" width="148" height="16" fill="#93C5FD" stroke="#60A5FA"/>
+      <rect x="96" y="270" width="148" height="16" fill="#93C5FD" stroke="#60A5FA"/>
+      <rect x="96" y="288" width="148" height="16" fill="#FCA5A5" stroke="#EF4444"/>
+      <rect x="96" y="306" width="148" height="16" fill="#FCA5A5" stroke="#EF4444"/>
+      <text x="170" y="344" font-size="15" fill="#475569" text-anchor="middle">KV 缓存像胶卷越积越长</text>
+      <text x="170" y="366" font-size="15" fill="#475569" text-anchor="middle">聊得越久，显存越吃紧</text>
+    </g>
+
+    <rect x="40" y="420" width="260" height="104" rx="10" fill="#FFFFFF" stroke="#94A3B8"/>
+    <text x="170" y="448" font-size="15" fill="#1E293B" text-anchor="middle" font-weight="bold">特点</text>
+    <text x="52" y="472" font-size="14" fill="#334155">· 记得准：随时翻看全部历史</text>
+    <text x="52" y="494" font-size="14" fill="#334155">· 训练可大规模并行</text>
+    <text x="52" y="516" font-size="14" fill="#B91C1C" font-weight="bold">· 算力/显存随长度平方级涨</text>
+  </g>
+
+  <!-- ================= RNN 面板 ================= -->
+  <g>
+    <rect x="330" y="16" width="300" height="528" rx="12" fill="#F8FAFC" stroke="#CBD5E1"/>
+    <rect x="330" y="16" width="300" height="44" rx="12" fill="#64748B"/>
+    <rect x="330" y="44" width="300" height="16" fill="#64748B"/>
+    <text x="480" y="45" font-size="20" font-weight="bold" fill="#FFFFFF" text-anchor="middle">RNN（老式循环网络）</text>
+
+    <!-- 链式传递 -->
+    <g stroke="#94A3B8" stroke-width="2" marker-end="url(#arr)">
+      <line x1="82" y1="150" x2="112" y2="150"/><line x1="160" y1="150" x2="190" y2="150"/>
+      <line x1="238" y1="150" x2="268" y2="150"/><line x1="316" y1="150" x2="346" y2="150"/>
+    </g>
+    <g>
+      <circle cx="66" cy="150" r="14" fill="#64748B"/><circle cx="144" cy="150" r="14" fill="#64748B"/>
+      <circle cx="222" cy="150" r="14" fill="#64748B"/><circle cx="300" cy="150" r="14" fill="#64748B"/>
+      <circle cx="378" cy="150" r="14" fill="#64748B"/>
+    </g>
+    <text x="480" y="196" font-size="15" fill="#475569" text-anchor="middle">像传话游戏：一个词一个词往下传</text>
+
+    <!-- 状态被覆盖 -->
+    <g>
+      <rect x="404" y="224" width="152" height="58" rx="8" fill="#E2E8F0" stroke="#94A3B8"/>
+      <text x="480" y="248" font-size="14" fill="#334155" text-anchor="middle">只有一个「小结」</text>
+      <text x="480" y="270" font-size="14" fill="#334155" text-anchor="middle">新的不断覆盖旧的</text>
+      <text x="480" y="318" font-size="15" fill="#475569" text-anchor="middle">开头说了啥？早忘了…</text>
+    </g>
+
+    <rect x="350" y="420" width="260" height="104" rx="10" fill="#FFFFFF" stroke="#94A3B8"/>
+    <text x="480" y="448" font-size="15" fill="#1E293B" text-anchor="middle" font-weight="bold">特点</text>
+    <text x="362" y="472" font-size="14" fill="#334155">· 显存恒定，天生适合流式</text>
+    <text x="362" y="494" font-size="14" fill="#334155">· 推理快而省</text>
+    <text x="362" y="516" font-size="14" fill="#B91C1C" font-weight="bold">· 训练难并行、长文会「失忆」</text>
+  </g>
+
+  <!-- ================= RWKV 面板 ================= -->
+  <g>
+    <rect x="640" y="16" width="300" height="528" rx="12" fill="#F0FDFA" stroke="#0F766E" stroke-width="2"/>
+    <rect x="640" y="16" width="300" height="44" rx="12" fill="#0F766E"/>
+    <rect x="640" y="44" width="300" height="16" fill="#0F766E"/>
+    <text x="790" y="45" font-size="20" font-weight="bold" fill="#FFFFFF" text-anchor="middle">RWKV（两者优点都要）</text>
+
+    <!-- 训练并行 -->
+    <path d="M700,92 L880,92" stroke="#0F766E" stroke-width="1.6" fill="none"/>
+    <path d="M700,92 L700,84 M880,92 L880,84" stroke="#0F766E" stroke-width="1.6"/>
+    <text x="790" y="76" font-size="14" fill="#0F766E" text-anchor="middle" font-weight="bold">训练时：整段并行（像 Transformer）</text>
+
+    <g stroke="#0F9488" stroke-width="2" marker-end="url(#arr)">
+      <line x1="716" y1="150" x2="744" y2="150"/><line x1="792" y1="150" x2="820" y2="150"/>
+    </g>
+    <g>
+      <circle cx="700" cy="150" r="14" fill="#14B8A6"/><circle cx="760" cy="150" r="14" fill="#14B8A6"/>
+      <circle cx="836" cy="150" r="14" fill="#14B8A6"/><circle cx="886" cy="150" r="14" fill="#14B8A6"/>
+    </g>
+    <text x="790" y="196" font-size="15" fill="#475569" text-anchor="middle">推理时：一个词一个词读（像 RNN）</text>
+
+    <!-- 固定 State -->
+    <rect x="712" y="240" width="156" height="52" rx="8" fill="#CCFBF1" stroke="#0F766E" stroke-width="2"/>
+    <text x="790" y="262" font-size="14" fill="#0F766E" text-anchor="middle" font-weight="bold">固定尺寸 State</text>
+    <text x="790" y="282" font-size="13" fill="#0F766E" text-anchor="middle">聊多久都不变大</text>
+    <text x="790" y="330" font-size="15" fill="#475569" text-anchor="middle">旧信息按可学习的速度淡忘</text>
+    <text x="790" y="352" font-size="15" fill="#475569" text-anchor="middle">新信息按重要性写入</text>
+
+    <rect x="660" y="420" width="260" height="104" rx="10" fill="#FFFFFF" stroke="#0F766E" stroke-width="1.5"/>
+    <text x="790" y="448" font-size="15" fill="#1E293B" text-anchor="middle" font-weight="bold">特点</text>
+    <text x="672" y="472" font-size="14" fill="#334155">· 训练 O(T) 并行，推理显存恒定</text>
+    <text x="672" y="494" font-size="14" fill="#334155">· 无注意力、无 KV 缓存</text>
+    <text x="672" y="516" font-size="14" fill="#0F766E" font-weight="bold">· 边缘设备 / 长对话 / CPU 都友好</text>
+  </g>
+
+  <text x="480" y="556" font-size="13" fill="#94A3B8" text-anchor="middle">图 1 · 三种序列架构一图看懂（RWKV = 训练像 Transformer，推理像 RNN）</text>
+</svg>

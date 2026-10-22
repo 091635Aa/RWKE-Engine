@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="660" viewBox="0 0 960 660" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <defs>
+    <marker id="arr6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#475569"/>
+    </marker>
+    <marker id="arr6t" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#0F766E"/>
+    </marker>
+  </defs>
+  <rect width="960" height="660" fill="#FFFFFF"/>
+  <text x="480" y="34" font-size="20" font-weight="bold" fill="#1E293B" text-anchor="middle">套用方案：把 RWKV 接进「EmoCompanion」AI 情感注入体系</text>
+
+  <!-- 用户层 -->
+  <rect x="150" y="52" width="660" height="52" rx="10" fill="#1E3A5F"/>
+  <text x="480" y="84" font-size="16" fill="#FFFFFF" text-anchor="middle" font-weight="bold">用户：长对话情感陪伴（多轮 · 随时打断 · 挂机不断线）</text>
+  <line x1="480" y1="104" x2="480" y2="126" stroke="#475569" stroke-width="2" marker-end="url(#arr6)"/>
+
+  <!-- 注入层 -->
+  <rect x="70" y="128" width="820" height="118" rx="12" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="480" y="156" font-size="16" font-weight="bold" fill="#1D4ED8" text-anchor="middle">EmoCompanion「解码期」情感注入层 —— 作用在 logits / 采样 / 调度上，与底层架构无关</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="90"  y="176" width="142" height="52" rx="8" fill="#FFFFFF" stroke="#60A5FA"/>
+    <text x="161" y="198" fill="#1E3A5F" font-weight="bold">PE 角色包</text>
+    <text x="161" y="217" fill="#475569">≤10MB 即插即用</text>
+    <rect x="248" y="176" width="142" height="52" rx="8" fill="#FFFFFF" stroke="#60A5FA"/>
+    <text x="319" y="198" fill="#1E3A5F" font-weight="bold">P1.5 自适应调度</text>
+    <text x="319" y="217" fill="#475569">λ/β/κ 自动匹配</text>
+    <rect x="406" y="176" width="142" height="52" rx="8" fill="#FFFFFF" stroke="#60A5FA"/>
+    <text x="477" y="198" fill="#1E3A5F" font-weight="bold">P2.5 词表调制</text>
+    <text x="477" y="217" fill="#475569">口癖↑ · AI腔↓</text>
+    <rect x="564" y="176" width="142" height="52" rx="8" fill="#FFFFFF" stroke="#60A5FA"/>
+    <text x="635" y="198" fill="#1E3A5F" font-weight="bold">P3 锚点回响</text>
+    <text x="635" y="217" fill="#475569">logits 情感偏置</text>
+    <rect x="722" y="176" width="150" height="52" rx="8" fill="#FFFFFF" stroke="#60A5FA"/>
+    <text x="797" y="198" fill="#1E3A5F" font-weight="bold">P6 情感导演</text>
+    <text x="797" y="217" fill="#475569">全局编排调度</text>
+  </g>
+
+  <!-- 分叉到双后端 -->
+  <path d="M480,246 L480,268" stroke="#475569" stroke-width="2"/>
+  <path d="M265,268 L480,268 M480,268 L695,268" stroke="#475569" stroke-width="2" fill="none"/>
+  <line x1="265" y1="268" x2="265" y2="290" stroke="#475569" stroke-width="2" marker-end="url(#arr6)"/>
+  <line x1="695" y1="268" x2="695" y2="290" stroke="#0F766E" stroke-width="2" marker-end="url(#arr6t)"/>
+
+  <!-- 左：Transformer 后端 -->
+  <rect x="90" y="292" width="350" height="128" rx="12" fill="#F8FAFC" stroke="#94A3B8"/>
+  <text x="265" y="322" font-size="16" font-weight="bold" fill="#334155" text-anchor="middle">Transformer 后端（Qwen2.5 基线）</text>
+  <text x="110" y="350" font-size="13.5" fill="#475569">· KV 缓存 O(n)：越聊显存越大</text>
+  <text x="110" y="374" font-size="13.5" fill="#475569">· P4「KV 情感共振」在此后端生效</text>
+  <text x="110" y="398" font-size="13.5" fill="#475569">· 精确引用长上下文能力强</text>
+  <text x="110" y="410" font-size="13.5" fill="#64748B"> （适合「查资料型」任务）</text>
+
+  <!-- 右：RWKV 后端 -->
+  <rect x="520" y="292" width="350" height="128" rx="12" fill="#F0FDFA" stroke="#0F766E" stroke-width="2.2"/>
+  <text x="695" y="322" font-size="16" font-weight="bold" fill="#0F766E" text-anchor="middle">RWKV-7 后端（0.4B / 1.5B / G1）★ 主推</text>
+  <text x="540" y="350" font-size="13.5" fill="#134E4A">· 固定 State O(1)：显存与对话长度无关</text>
+  <text x="540" y="374" font-size="13.5" fill="#134E4A">· 恒定速度：长陪伴不卡顿、CPU 可跑</text>
+  <text x="540" y="398" font-size="13.5" fill="#134E4A">· 新实验点：P4 变体「State 情感共振」</text>
+  <text x="540" y="410" font-size="13.5" fill="#64748B"> （对 State 中 att_kv 通道做选择性缩放）</text>
+
+  <!-- RWKE 接口 -->
+  <line x1="480" y1="420" x2="480" y2="444" stroke="#475569" stroke-width="2" marker-end="url(#arr6)"/>
+  <rect x="150" y="446" width="660" height="76" rx="12" fill="#FFF7ED" stroke="#EA8C3C" stroke-width="1.6"/>
+  <text x="480" y="474" font-size="15" font-weight="bold" fill="#C2570B" text-anchor="middle">RWKE 统一状态接口（五操作，两后端共用）</text>
+  <g font-size="13.5" text-anchor="middle">
+    <rect x="190" y="486" width="110" height="26" rx="13" fill="#FFFFFF" stroke="#EA8C3C"/>
+    <text x="245" y="504" fill="#7C2D12">① 初始化</text>
+    <rect x="324" y="486" width="110" height="26" rx="13" fill="#FFFFFF" stroke="#EA8C3C"/>
+    <text x="379" y="504" fill="#7C2D12">② 前进</text>
+    <rect x="458" y="486" width="110" height="26" rx="13" fill="#FFFFFF" stroke="#EA8C3C"/>
+    <text x="513" y="504" fill="#7C2D12">③ 克隆</text>
+    <rect x="592" y="486" width="200" height="26" rx="13" fill="#FFFFFF" stroke="#EA8C3C"/>
+    <text x="692" y="504" fill="#7C2D12">④ 保存 / ⑤ 加载</text>
+  </g>
+
+  <!-- State 库 -->
+  <line x1="480" y1="522" x2="480" y2="544" stroke="#475569" stroke-width="2" marker-end="url(#arr6)"/>
+  <rect x="150" y="546" width="660" height="56" rx="10" fill="#F0FDFA" stroke="#0F766E" stroke-width="1.8"/>
+  <text x="480" y="570" font-size="14.5" fill="#0F766E" text-anchor="middle" font-weight="bold">角色日记 State 库：每个「角色此刻的心情」存成一个 .pth（约 6–12 MB）</text>
+  <text x="480" y="592" font-size="13.5" fill="#134E4A" text-anchor="middle">秒级热切换角色 · 克隆分支剧情 · 断线重连秒恢复 · 挂载到不同设备（模型标识校验防错挂）</text>
+
+  <text x="480" y="638" font-size="13" fill="#94A3B8" text-anchor="middle">图 6 · RWKV × EmoCompanion体系结合架构（注入层全兼容；State 五操作对接 RWKE/状态接口.py）</text>
+</svg>

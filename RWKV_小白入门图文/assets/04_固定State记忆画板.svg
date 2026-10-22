@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="470" viewBox="0 0 960 470" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <defs>
+    <marker id="arr4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#64748B"/>
+    </marker>
+    <marker id="arr4t" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#0F766E"/>
+    </marker>
+  </defs>
+  <rect width="960" height="470" fill="#FFFFFF"/>
+  <text x="480" y="36" font-size="20" font-weight="bold" fill="#1E293B" text-anchor="middle">核心区别：KV 缓存「无限加页」 vs RWKV State「固定画板」</text>
+
+  <!-- 左：KV 缓存 -->
+  <rect x="30" y="60" width="430" height="330" rx="12" fill="#FEF2F2" stroke="#FCA5A5"/>
+  <text x="245" y="92" font-size="17" font-weight="bold" fill="#B91C1C" text-anchor="middle">Transformer：KV 缓存 = 无限加页的账本</text>
+  <g stroke="#F87171" stroke-width="1.4">
+    <rect x="60"  y="120" width="170" height="30" fill="#FFFFFF"/>
+    <rect x="60"  y="158" width="170" height="30" fill="#FFFFFF"/>
+    <rect x="60"  y="196" width="170" height="30" fill="#FFFFFF"/>
+    <rect x="60"  y="234" width="170" height="30" fill="#FFFFFF"/>
+    <rect x="60"  y="272" width="170" height="30" fill="#FFFFFF"/>
+  </g>
+  <g font-size="13" fill="#7F1D1D">
+    <text x="74" y="140">第 1 句的 K·V</text>
+    <text x="74" y="178">第 2 句的 K·V</text>
+    <text x="74" y="216">第 3 句的 K·V</text>
+    <text x="74" y="254">…… 每句都要存</text>
+    <text x="74" y="292">第 n 句的 K·V</text>
+  </g>
+  <text x="340" y="230" font-size="30" fill="#DC2626" font-weight="bold" text-anchor="middle">↑</text>
+  <text x="340" y="260" font-size="15" fill="#B91C1C" text-anchor="middle">页数 = 对话长度</text>
+  <text x="340" y="284" font-size="15" fill="#B91C1C" text-anchor="middle">永远加不完</text>
+  <rect x="60" y="330" width="370" height="40" rx="8" fill="#FFFFFF" stroke="#DC2626"/>
+  <text x="245" y="356" font-size="15" fill="#B91C1C" text-anchor="middle" font-weight="bold">空间 O(n)：显存随对话线性增长</text>
+
+  <!-- 右：RWKV State -->
+  <rect x="500" y="60" width="430" height="330" rx="12" fill="#F0FDFA" stroke="#5EEAD4"/>
+  <text x="715" y="92" font-size="17" font-weight="bold" fill="#0F766E" text-anchor="middle">RWKV：State = 固定尺寸的记忆画板</text>
+  <rect x="570" y="130" width="290" height="140" rx="10" fill="#FFFFFF" stroke="#0F766E" stroke-width="2"/>
+  <g font-size="14" fill="#134E4A">
+    <text x="715" y="158" text-anchor="middle">一块画板，尺寸永远不变</text>
+    <text x="715" y="184" text-anchor="middle">新的写上去（K ⊗ V）</text>
+    <text x="715" y="210" text-anchor="middle">旧的按 W 慢慢褪色</text>
+    <text x="715" y="238" text-anchor="middle">读的时候用 R 挑重点</text>
+  </g>
+  <!-- 循环箭头 -->
+  <path d="M620,300 A110,42 0 1,0 810,300" fill="none" stroke="#0F766E" stroke-width="2" marker-end="url(#arr4t)"/>
+  <text x="715" y="330" font-size="14" fill="#0F766E" text-anchor="middle" font-weight="bold">每来一个词：擦一点 → 写一点 → 画板不变</text>
+  <rect x="530" y="360" width="370" height="40" rx="8" fill="#FFFFFF" stroke="#0F766E"/>
+  <text x="715" y="386" font-size="15" fill="#0F766E" text-anchor="middle" font-weight="bold">空间 O(1)：显存与对话长度无关</text>
+
+  <text x="245" y="424" font-size="14" fill="#64748B" text-anchor="middle">代价：想引用很久之前某一页原文？只能靠画板里的「印象」</text>
+  <text x="715" y="424" font-size="14" fill="#0F766E" text-anchor="middle">收益：聊 100 句和聊 10 万句，开销一模一样</text>
+  <text x="480" y="458" font-size="13" fill="#94A3B8" text-anchor="middle">图 4 · 记忆承载方式对比（RWKV-7 0.4B 模型 State 约 6 MB、1.5B 约 12 MB，fp32）</text>
+</svg>

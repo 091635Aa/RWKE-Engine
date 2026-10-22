@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="500" viewBox="0 0 960 500" font-family="Microsoft YaHei, PingFang SC, sans-serif">
+  <rect width="960" height="500" fill="#FFFFFF"/>
+  <text x="480" y="36" font-size="20" font-weight="bold" fill="#1E293B" text-anchor="middle">同样 7B 级模型：对话越长，Transformer 显存飙升，RWKV 纹丝不动</text>
+  <text x="480" y="60" font-size="13" fill="#94A3B8" text-anchor="middle">约值：Q4 量化 · 单卡（数据参考 RWKV-7 本地部署实测，仅示意量级）</text>
+
+  <!-- 网格与坐标 -->
+  <g stroke="#E2E8F0" stroke-width="1">
+    <line x1="110" y1="396" x2="900" y2="396"/><line x1="110" y1="311" x2="900" y2="311"/>
+    <line x1="110" y1="226" x2="900" y2="226"/><line x1="110" y1="141" x2="900" y2="141"/>
+    <line x1="110" y1="56" x2="900" y2="56"/>
+  </g>
+  <g font-size="13" fill="#64748B">
+    <text x="100" y="400" text-anchor="end">0 GB</text>
+    <text x="100" y="315" text-anchor="end">8 GB</text>
+    <text x="100" y="230" text-anchor="end">16 GB</text>
+    <text x="100" y="145" text-anchor="end">24 GB</text>
+    <text x="100" y="60" text-anchor="end">32 GB</text>
+  </g>
+  <g font-size="14" fill="#334155" text-anchor="middle">
+    <text x="140" y="424">2K</text><text x="262" y="424">8K</text><text x="384" y="424">16K</text>
+    <text x="506" y="424">32K</text><text x="628" y="424">64K</text><text x="750" y="424">128K</text>
+  </g>
+  <text x="505" y="452" font-size="14" fill="#64748B" text-anchor="middle">上下文长度（token 数）</text>
+  <text x="34" y="230" font-size="14" fill="#64748B" text-anchor="middle" transform="rotate(-90 34 230)">显存占用（GB）</text>
+
+  <!-- Transformer 折线：5.5 7 9 12 18 30 -->
+  <polyline points="140,329 262,308 384,285 506,249 628,169 750,62" fill="none" stroke="#DC2626" stroke-width="3"/>
+  <g fill="#DC2626">
+    <circle cx="140" cy="329" r="5"/><circle cx="262" cy="308" r="5"/><circle cx="384" cy="285" r="5"/>
+    <circle cx="506" cy="249" r="5"/><circle cx="628" cy="169" r="5"/><circle cx="750" cy="62" r="5"/>
+  </g>
+  <g font-size="13" fill="#DC2626" font-weight="bold">
+    <text x="152" y="322">5.5</text><text x="274" y="301">7</text><text x="396" y="278">9</text>
+    <text x="518" y="242">12</text><text x="640" y="162">18</text><text x="762" y="58">30+</text>
+  </g>
+
+  <!-- RWKV 平线：4.5 -->
+  <line x1="140" y1="338" x2="750" y2="338" stroke="#0F766E" stroke-width="3" stroke-dasharray="10 6"/>
+  <g fill="#0F766E">
+    <circle cx="140" cy="338" r="5"/><circle cx="262" cy="338" r="5"/><circle cx="384" cy="338" r="5"/>
+    <circle cx="506" cy="338" r="5"/><circle cx="628" cy="338" r="5"/><circle cx="750" cy="338" r="5"/>
+  </g>
+  <text x="580" y="368" font-size="14" fill="#0F766E" font-weight="bold">恒定 ≈ 4.5 GB（State 固定，与长度无关）</text>
+
+  <!-- 标注 -->
+  <rect x="452" y="120" width="180" height="46" rx="8" fill="#FEF2F2" stroke="#DC2626"/>
+  <text x="542" y="139" font-size="13" fill="#B91C1C" text-anchor="middle">KV 缓存随对话线性增长</text>
+  <text x="542" y="158" font-size="13" fill="#B91C1C" text-anchor="middle">长陪伴 = 显存炸弹</text>
+  <line x1="560" y1="166" x2="600" y2="242" stroke="#DC2626" stroke-width="1.2" stroke-dasharray="4 3"/>
+
+  <text x="480" y="486" font-size="13" fill="#94A3B8" text-anchor="middle">图 2 · 显存-上下文长度对比：RWKV 的 State 是「固定画板」，Transformer 的 KV 缓存是「无限加页的账本」</text>
+</svg>

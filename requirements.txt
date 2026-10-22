@@ -1,0 +1,26 @@
+# ============================================================
+# RWKE（RWKV-Kernel-Engine）依赖清单
+# 安装方式：pip install -r requirements.txt
+#
+# 注意事项：
+# 1. torch 不锁定版本：请按本机 CUDA 版本安装对应构建，例如：
+#      pip install torch --index-url https://download.pytorch.org/whl/cu124
+#    （cu124 请按本机驱动/已装 CUDA Toolkit 调整；无 NVIDIA 显卡时
+#      可直接 pip install torch 安装 CPU 版）
+# 2. rwkv 包需 >= 0.8.27 才支持 RWKV-7（Goose）模型，目标版本 0.8.32；
+#    加载 RWKV-7 模型前需设置环境变量 RWKV_V7_ON=1。
+# 3. 启用 CUDA 算子（RWKV_CUDA_ON=1）需系统已安装 CUDA Toolkit（含 nvcc）；
+#    若编译失败，可回退 RWKV_CUDA_ON=0 纯 PyTorch 模式。
+# ============================================================
+
+rwkv>=0.8.27
+torch
+numpy
+transformers
+peft
+scikit-learn
+jieba
+tqdm
+requests          # 下载模型.py 依赖
+cnsenti           # 可选：情感词密度（缺失时测试_对比.py 自动回退本地词表）
+ninja             # 可选：RWKV_CUDA_ON=1 时编译 CUDA 算子所需（还需 MSVC cl.exe）
