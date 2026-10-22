@@ -1,0 +1,26 @@
+# ---- 本地 / IDE ----
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.idea/
+.vscode/
+.trae/
+.DS_Store
+Thumbs.db
+
+# ---- 模型权重与运行时状态（不入库，按 README 下载/生成）----
+models/
+states/
+dist/
+*.pth
+*.pt
+*.safetensors
+*.gguf
+*.ckpt
+*.bin
+
+# ---- 本地临时 ----
+*.tmp
+*.bak
